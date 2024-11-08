@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/index.css">
+    <title>Tartas' Bakery</title>
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <h1><span class="bakery-name">Tartas' Bakery</span></h1>
+            <img src="images/big cookie.png" alt="Cookie" class="cookie">
+            <h1>Cookies <span>0</span></h1>
+        </div>
+
+        <div class="right-panel">
+            <div class="item">
+                <div class="item-info">
+                    <img src="images/grandma.png" alt="Grandma">
+                    <p>Grandma</p>
+                </div>
+                <div class="price-box">
+                    <span class="price">100</span>
+                    <img src="images/cookie-icon.png" alt="Cookie" class="cookie-icon">
+                </div>
+                <div class="item-buttons">
+                    <button class="button button-buy1">Buy 1</button>
+                    <button class="button button-buy10">Buy 10</button>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-info">
+                    <img src="images/cookie farm.png" alt="Farm">
+                    <p>Farm</p>
+                </div>
+                <div class="price-box">
+                    <span class="price">500</span>
+                    <img src="images/cookie-icon.png" alt="Cookie" class="cookie-icon">
+                </div>
+                <div class="item-buttons">
+                    <button class="button button-buy1">Buy 1</button>
+                    <button class="button button-buy10">Buy 10</button>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-info">
+                    <img src="images/cookie mine.png" alt="Mine">
+                    <p>Mine</p>
+                </div>
+                <div class="price-box">
+                    <span class="price">1000</span>
+                    <img src="images/cookie-icon.png" alt="" class="cookie-icon">
+                </div>
+                <div class="item-buttons">
+                    <button class="button button-buy1">Buy 1</button>
+                    <button class="button button-buy10">Buy 10</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
