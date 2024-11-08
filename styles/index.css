@@ -1,4 +1,4 @@
-/*/* Center container on the page */
+/* Estilo básico */
 body {
     color: #e7e7e7;
     display: flex;
@@ -8,7 +8,6 @@ body {
     margin: 0;
 }
 
-/* General styling */
 .container {
     gap: 10%;
     align-items: center;
@@ -34,15 +33,11 @@ body {
 }
 
 .cookie {
+    cursor:pointer;
     width: 100%;
     max-width: 200px;
     height: auto;
     margin: 20px 0;
-}
-
-.stats {
-    font-size: 1.2em;
-    text-align: left;
 }
 
 .right-panel {
@@ -60,21 +55,32 @@ body {
     justify-content: space-between;
 }
 
+.item-info {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    flex: 1;
+}
+
 .item img {
     width: 50px;
     height: auto;
     margin-right: 20px;
 }
 
-.item-info {
+.quantity {
+    font-size: 1.2em;
+    color: #ffffff;
+    margin-left: 10px;
+}
+
+/* Caixa de preço */
+.price-box {
     display: flex;
     align-items: center;
     font-size: 1.2em;
-}
-
-.price {
-    display: flex;
-    align-items: center;
+    color: #ffffff;
+    margin-right: 20px;
 }
 
 .cookie-icon {
@@ -90,11 +96,10 @@ body {
 }
 
 .button {
-    padding: 8px 12px;
+    padding: 6px 10px;
     border: none;
     border-radius: 5px;
-    font-size: 1em;
-    cursor: pointer;
+    font-size: 0.9em; 
 }
 
 .button-buy1 {
@@ -107,7 +112,15 @@ body {
     color: black;
 }
 
-/* Responsive Design */
+.selector {
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Design Responsivo */
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
@@ -130,10 +143,6 @@ body {
 
     .item-buttons {
         justify-content: center;
-    }
-
-    .stats {
-        text-align: center;
     }
 
     .bakery-name {
