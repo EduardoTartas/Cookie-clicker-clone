@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/index.css">
-    <title>Tartas' Bakery</title>
+    <title>Cookie Clicker</title>
     <script src="script/script.ts"></script>
 </head>
 <body>
     <div class="container">
         <div class="left-panel">
-            <h1><span class="bakery-name">Cookie Clicker</span></h1>
+            <h1><span class="bakery-name">Grandma's bakery</span></h1>
             <img src="images/big cookie.png" alt="Cookie" class="cookie selector">
-            <h1>Cookies <span>0</span></h1>
+            <h1>Cookies <span id="counter">0</span></h1>
         </div>
 
         <div class="right-panel">
@@ -20,45 +20,45 @@
                 <div class="item-info">
                     <img src="images/grandma.png" alt="Grandma">
                     <p>Grandma</p>
-                    <span class="quantity">0</span> <!-- Adicionado -->
+                    <span class="quantity" id="grandma-quantity">0</span>
                 </div>
                 <div class="price-box">
-                    <span class="price">50</span>
+                    <span class="price" id="grandma-price">50</span>
                     <span>🍪</span>
                 </div>
                 <div class="item-buttons">
-                    <button class="button button-buy1">Buy 1</button>
-                    <button class="button button-buy10">Buy 10</button>
+                    <button class="button button-buy1" id="buy-1-grandma">Buy 1</button>
+                    <button class="button button-buy10" id="buy-10-grandma">Buy 10</button>
                 </div>
             </div>
             <div class="item">
                 <div class="item-info">
                     <img src="images/cookie farm.png" alt="Farm">
                     <p>Farm</p>
-                    <span class="quantity">0</span> <!-- Adicionado -->
+                    <span class="quantity" id="farm-quantity">0</span> 
                 </div>
                 <div class="price-box">
-                    <span class="price">100</span>
+                    <span class="price" id="farm-price">100</span>
                     <span>🍪</span>
                 </div>
                 <div class="item-buttons">
-                    <button class="button button-buy1">Buy 1</button>
-                    <button class="button button-buy10">Buy 10</button>
+                    <button class="button button-buy1" id="buy-1-farm">Buy 1</button>
+                    <button class="button button-buy10" id="buy-10-farm">Buy 10</button>
                 </div>
             </div>
             <div class="item">
                 <div class="item-info">
                     <img src="images/cookie mine.png" alt="Mine">
                     <p>Mine</p>
-                    <span class="quantity">0</span> <!-- Adicionado -->
+                    <span class="quantity" id="mine-quantity">0</span>
                 </div>
                 <div class="price-box">
-                    <span class="price">200</span>
+                    <span class="price" id="farm-price">200</span>
                     <span>🍪</span>
                 </div>
                 <div class="item-buttons">
-                    <button class="button button-buy1">Buy 1</button>
-                    <button class="button button-buy10">Buy 10</button>
+                    <button class="button button-buy1" id="buy-1-mine">Buy 1</button>
+                    <button class="button button-buy10" id="buy-10-mine">Buy 10</button>
                 </div>
             </div>
         </div>
