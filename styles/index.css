@@ -2,10 +2,13 @@
 body {
     color: #e7e7e7;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     margin: 0;
+    background-color: #000000e5;
+
 }
 
 .container {
@@ -120,7 +123,27 @@ body {
     -ms-user-select: none;
 }
 
-/* Design Responsivo */
+footer {
+    background-color: #33333300;
+    color: #e7e7e7;
+    text-align: center;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1em;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    position: fixed;
+    bottom: 0;
+}
+
+footer img {
+    width: 40px;
+    height: 40px;
+}
+
+
+/* Responsividade*/
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
