@@ -22,6 +22,7 @@ body {
     width: 90%;
     max-width: 800px;
     box-sizing: border-box;
+    padding-bottom: 50px;
 }
 
 .left-panel, .right-panel {
@@ -135,6 +136,7 @@ footer {
     gap: 10px;
     position: fixed;
     bottom: 0;
+    z-index: 10;
 }
 
 footer img {
@@ -148,6 +150,7 @@ footer img {
     .container {
         flex-direction: column;
         align-items: center;
+        padding-bottom: 80px;
     }
 
     .left-panel, .right-panel {
@@ -176,7 +179,6 @@ footer img {
 @media (max-width: 480px) {
     .bakery-name {
         font-size: 1.2em;
-        content: "Tartas'";
     }
 
     .stats {
