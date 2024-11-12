@@ -1,18 +1,42 @@
+document.addEventListener('DOMContentLoaded', () => {
+
+
+class Entity {
+    price:number;
+    quantity:number;
+    cookiesValue:number;
+    cookiesPerSecond:number;
+
+    
+
+    constructor(price:number, cookiesValue:number){
+        this.price = price;
+        this.quantity = 0;
+        this.cookiesValue = cookiesValue;
+        this.cookiesPerSecond = 0;
+    }
+
+    buy1() : void{
+        cookie.quantity -=this.price
+        this.price *= Math.round(1.15);
+        this.quantity ++;
+        this.cookiesPerSecond += this.cookiesValue;
+    }
+}
+
+
 let totalCookies: number = 100000;
 
+const cookie = new Entity(0,0)
 
-let grandmaQuantity:number = 0;
-let grandmaCookies:number = 0;
-let grandmaPrice:number = 50;
+const grandma = new Entity(50, 2);
+console.log(grandma);
 
-
-document.addEventListener('DOMContentLoaded', () => {
-   
-    //conatdor e cookie principal
+    //contador e cookie principal
     const counter = document.getElementById('counter')!;
     const cookieImage = document.getElementById('cookieImage')!;
 
-    //grandma preço quantidade
+    //grandma preço quantidade=>
     const grandmaCounter = document.getElementById('grandma-quantity')!;
     const grdBuy1 = document.getElementById('buy-1-grandma')!;
     const grdBuy5 = document.getElementById('buy-5-grandma')!;
@@ -20,48 +44,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function update(){
-        counter.innerHTML = `${Math.round(totalCookies)}`;
-        grandmaCounter.innerHTML = `${Math.round(grandmaQuantity)}`
-        grdPrice.innerHTML = `${Math.round(grandmaPrice)}`
+        counter.innerHTML = `${Math.round(cookie.quantity)}`;
+        grandmaCounter.innerHTML = `${grandma.quantity}`
+        grdPrice.innerHTML = `${Math.round(grandma.price)}`
+        console.log(`${cookie.quantity}`)
     }
 
     //função de gerar cookie clicando
     function click() {
-        totalCookies += 1;
+        cookie.buy1();
         update();
     }
     cookieImage.addEventListener('click', click);
 
-    //função buy1 grd
-    function gdrbuy1(){
-        if(totalCookies>=grandmaPrice){
-            totalCookies -= grandmaPrice;
-            grandmaPrice *= 1.15; 
-            grandmaQuantity ++;
-            update();
-        }
-    }
-    grdBuy1.addEventListener('click', gdrbuy1);
+    //função buy1 grandma
+    grdBuy1.addEventListener('click', ()=>{
+        if(cookie.quantity>=grandma.price)
+        totalCookies -= grandma.price;
+        grandma.buy1();
+        update();
+    });
     
-    //
-    /*function gdrbuy5(){
-        if(totalCookies>=Math.round(grandmaPrice * 5)){
-            totalCookies -= grandmaPrice;
-            grandmaPrice *= 1.15; 
-            grandmaQuantity ++;
-            update();
-        }
-    }
-
-    function buy1(price:number, grandmaQuantity:number){
-        totalCookies -= price;
-        price *= 1.15
-        grandmaQuantity ++
-        }
-
-    grdBuy5.addEventListener('click', gdrbuy5);*/
-
-
 
     
 });
