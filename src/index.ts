@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
             update();
         });        
 
-    
+    //arrumar
     function second(): void{
         let totalCookiePerSecond :number = 0;
         totalCookiePerSecond += grandma.getCookiesPerSecond();
