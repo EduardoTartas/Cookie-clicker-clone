@@ -2,12 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 class Entity {
-    price:number;
-    quantity:number;
-    cookiesValue:number;
-    cookiesPerSecond:number;
-
-    
+    private price:number;
+    private quantity:number;
+    private cookiesValue:number;
+    private cookiesPerSecond:number;
 
     constructor(price:number, cookiesValue:number){
         this.price = price;
@@ -17,17 +15,48 @@ class Entity {
     }
 
     buy1() : void{
-        cookie.quantity -=this.price
-        this.price *= Math.round(1.15);
-        this.quantity ++;
-        this.cookiesPerSecond += this.cookiesValue;
+        if(cookie.quantity>=this.price){
+            cookie.quantity -=this.price
+            this.price *= Math.round(1.15);
+            this.quantity ++;
+            this.cookiesPerSecond += this.cookiesValue;
+        }
     }
+
+
+    buy5() : void{
+        if(cookie.quantity>=this.price){
+            cookie.quantity -=this.price
+            this.price *= Math.round(1.15);
+            this.quantity ++;
+            this.cookiesPerSecond += this.cookiesValue;
+        }
+    }
+
+
+    public getPrice(): number {return this.price;}
+
+    public setPrice(price: number): void {this.price = price;}
+
+    public getQuantity(): number {return this.quantity;}
+
+    public setQuantity(quantity: number): void {this.quantity = quantity;}
+
+    public getCookiesValue(): number {return this.cookiesValue;}
+
+    public setCookiesValue(cookiesValue: number): void {this.cookiesValue = cookiesValue;}
+
+    public getCookiesPerSecond(): number {return this.cookiesPerSecond;}
+
+    public setCookiesPerSecond(cookiesPerSecond: number): void {this.cookiesPerSecond = cookiesPerSecond;}
+
 }
 
 
-let totalCookies: number = 100000;
+
 
 const cookie = new Entity(0,0)
+cookie.quantity=100000;
 
 const grandma = new Entity(50, 2);
 console.log(grandma);
@@ -44,9 +73,9 @@ console.log(grandma);
 
     function update(){
         counter.innerHTML = `${Math.round(cookie.quantity)}`;
-        grandmaCounter.innerHTML = `${grandma.quantity}`
-        grdPrice.innerHTML = `${Math.round(grandma.price)}`
-        console.log(`${cookie.quantity}`)
+        grandmaCounter.innerHTML = `${grandma.quantity}`;
+        grdPrice.innerHTML = `${Math.round(grandma.price)}`;
+        console.log(`${cookie.quantity}`);
     }
     
     //função de gerar cookie clicando
@@ -57,13 +86,17 @@ console.log(grandma);
     cookieImage.addEventListener('click', click);
 
     //função buy1 grandma
-    grdBuy1.addEventListener('click', ()=>{
+    /*grdBuy1.addEventListener('click', ()=>{
         if(cookie.quantity>=grandma.price)
-        totalCookies -= grandma.price;
         grandma.buy1();
         update();
-    });
+    });*/
     
+    grdBuy1.addEventListener('click', ()=>{
+        
+        grandma.buy1();
+        update()});
+
 
     
 });

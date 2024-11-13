@@ -8,24 +8,26 @@ document.addEventListener('DOMContentLoaded', () => {
             this.cookiesPerSecond = 0;
         }
         buy1() {
-            cookie.quantity -= this.price;
-            this.price *= Math.round(1.15);
-            this.quantity++;
-            this.cookiesPerSecond += this.cookiesValue;
+            if (cookie.quantity >= this.price) {
+                cookie.quantity -= this.price;
+                this.price *= Math.round(1.15);
+                this.quantity++;
+                this.cookiesPerSecond += this.cookiesValue;
+            }
         }
     }
-    let totalCookies = 100000;
     const cookie = new Entity(0, 0);
+    cookie.quantity = 100000;
     const grandma = new Entity(50, 2);
     console.log(grandma);
     //contador e cookie principal
-    const counter = document.getElementById('counter');
-    const cookieImage = document.getElementById('cookieImage');
+    const counter = document.querySelector('#counter');
+    const cookieImage = document.querySelector('#cookieImage');
     //grandma preço quantidade=>
-    const grandmaCounter = document.getElementById('grandma-quantity');
-    const grdBuy1 = document.getElementById('buy-1-grandma');
-    const grdBuy5 = document.getElementById('buy-5-grandma');
-    const grdPrice = document.getElementById('grandma-price');
+    const grandmaCounter = document.querySelector('#grandma-quantity');
+    const grdBuy1 = document.querySelector('#buy-1-grandma');
+    const grdBuy5 = document.querySelector('#buy-5-grandma');
+    const grdPrice = document.querySelector('#grandma-price');
     function update() {
         counter.innerHTML = `${Math.round(cookie.quantity)}`;
         grandmaCounter.innerHTML = `${grandma.quantity}`;
@@ -39,9 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     cookieImage.addEventListener('click', click);
     //função buy1 grandma
+    /*grdBuy1.addEventListener('click', ()=>{
+        if(cookie.quantity>=grandma.price)
+        grandma.buy1();
+        update();
+    });*/
     grdBuy1.addEventListener('click', () => {
-        if (cookie.quantity >= grandma.price)
-            totalCookies -= grandma.price;
         grandma.buy1();
         update();
     });
