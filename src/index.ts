@@ -24,16 +24,6 @@ class Entity {
     }
 
 
-    buy5() : void{
-        if(cookie.quantity>=this.price){
-            cookie.quantity -=this.price
-            this.price *= Math.round(1.15);
-            this.quantity ++;
-            this.cookiesPerSecond += this.cookiesValue;
-        }
-    }
-
-
     public getPrice(): number {return this.price;}
 
     public setPrice(price: number): void {this.price = price;}
