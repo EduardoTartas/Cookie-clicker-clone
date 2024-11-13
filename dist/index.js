@@ -34,22 +34,37 @@ class Entity {
     setCookiesPerSecond(cookiesPerSecond) { this.cookiesPerSecond = cookiesPerSecond; }
 }
 const cookie = new Entity(0, 0);
-cookie.setQuantity(10000000);
 const grandma = new Entity(50, 1);
+const farm = new Entity(150, 3);
+const mine = new Entity(300, 6);
 document.addEventListener('DOMContentLoaded', () => {
     //cookie's querySelector
     const counter = document.querySelector('#counter');
     const cookieImage = document.querySelector('#cookieImage');
     //gradma's querySelector
-    const grdCounter = document.querySelector('#grandma-quantity');
+    const grdQuantity = document.querySelector('#grandma-quantity');
     const grdPrice = document.querySelector('#grandma-price');
     const grdBuy1 = document.querySelector('#buy-1-grandma');
     const grdBuy5 = document.querySelector('#buy-5-grandma');
+    //farm's querySelector
+    const farmQuantity = document.querySelector('#farm-quantity');
+    const farmPrice = document.querySelector('#farm-price');
+    const farmBuy1 = document.querySelector('#buy-1-farm');
+    const farmBuy5 = document.querySelector('#buy-5-farm');
+    //mine's querySelector
+    const mineQuantity = document.querySelector('#mine-quantity');
+    const minePrice = document.querySelector('#mine-price');
+    const mineBuy1 = document.querySelector('#buy-1-mine');
+    const mineBuy5 = document.querySelector('#buy-5-mine');
     //status' update
     function update() {
         counter.innerHTML = `${cookie.getQuantity()}`;
-        grdCounter.innerHTML = `${grandma.getQuantity()}`;
+        grdQuantity.innerHTML = `${grandma.getQuantity()}`;
         grdPrice.innerHTML = `${grandma.getPrice()}`;
+        farmQuantity.innerHTML = `${farm.getQuantity()}`;
+        farmPrice.innerHTML = `${farm.getPrice()}`;
+        mineQuantity.innerHTML = `${mine.getQuantity()}`;
+        minePrice.innerHTML = `${mine.getPrice()}`;
     }
     //cookie's click
     cookieImage.addEventListener('click', () => {
@@ -65,10 +80,31 @@ document.addEventListener('DOMContentLoaded', () => {
         grandma.buy5();
         update();
     });
+    //farm's buy 1 and buy 5
+    farmBuy1.addEventListener('click', () => {
+        farm.buy1();
+        update();
+    });
+    farmBuy5.addEventListener('click', () => {
+        farm.buy5();
+        update();
+    });
+    //farm's buy 1 and buy 5
+    mineBuy1.addEventListener('click', () => {
+        mine.buy1();
+        update();
+    });
+    mineBuy5.addEventListener('click', () => {
+        mine.buy5();
+        update();
+    });
     function second() {
         let totalCookiePerSecond = 0;
         totalCookiePerSecond += grandma.getCookiesPerSecond();
+        totalCookiePerSecond += farm.getCookiesPerSecond();
+        totalCookiePerSecond += mine.getCookiesPerSecond();
         cookie.setQuantity(cookie.getQuantity() + totalCookiePerSecond);
+        update();
     }
     setInterval(second, 500);
 });
