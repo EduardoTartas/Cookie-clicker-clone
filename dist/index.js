@@ -10,14 +10,32 @@ document.addEventListener('DOMContentLoaded', () => {
         buy1() {
             if (cookie.quantity >= this.price) {
                 cookie.quantity -= this.price;
-                this.price *= Math.round(1.15);
+                this.price = Math.round(this.price * 1.15);
                 this.quantity++;
                 this.cookiesPerSecond += this.cookiesValue;
             }
         }
+        buy5() {
+            if (cookie.quantity >= (this.price * 5)) {
+                cookie.quantity -= (this.price * 5);
+                for (let i = 0; i < 5; i++) {
+                    this.price = Math.round(this.price * 1.15);
+                }
+                this.quantity += 5;
+                this.cookiesPerSecond += (this.cookiesValue * 5);
+            }
+        }
+        getPrice() { return this.price; }
+        setPrice(price) { this.price = price; }
+        getQuantity() { return this.quantity; }
+        setQuantity(quantity) { this.quantity = quantity; }
+        getCookiesValue() { return this.cookiesValue; }
+        setCookiesValue(cookiesValue) { this.cookiesValue = cookiesValue; }
+        getCookiesPerSecond() { return this.cookiesPerSecond; }
+        setCookiesPerSecond(cookiesPerSecond) { this.cookiesPerSecond = cookiesPerSecond; }
     }
     const cookie = new Entity(0, 0);
-    cookie.quantity = 100000;
+    cookie.setQuantity(10000000);
     const grandma = new Entity(50, 2);
     console.log(grandma);
     //contador e cookie principal
@@ -29,25 +47,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const grdBuy5 = document.querySelector('#buy-5-grandma');
     const grdPrice = document.querySelector('#grandma-price');
     function update() {
-        counter.innerHTML = `${Math.round(cookie.quantity)}`;
-        grandmaCounter.innerHTML = `${grandma.quantity}`;
-        grdPrice.innerHTML = `${Math.round(grandma.price)}`;
-        console.log(`${cookie.quantity}`);
+        counter.innerHTML = `${cookie.getQuantity()}`;
+        grandmaCounter.innerHTML = `${grandma.getQuantity()}`;
+        grdPrice.innerHTML = `${grandma.getPrice()}`;
     }
     //função de gerar cookie clicando
-    function click() {
+    cookieImage.addEventListener('click', () => {
         cookie.buy1();
         update();
-    }
-    cookieImage.addEventListener('click', click);
-    //função buy1 grandma
-    /*grdBuy1.addEventListener('click', ()=>{
-        if(cookie.quantity>=grandma.price)
-        grandma.buy1();
-        update();
-    });*/
+    });
     grdBuy1.addEventListener('click', () => {
         grandma.buy1();
+        update();
+    });
+    grdBuy5.addEventListener('click', () => {
+        grandma.buy5();
         update();
     });
 });
