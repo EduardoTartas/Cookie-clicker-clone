@@ -33,15 +33,14 @@ const grandma = new Entity(50, 2);
 console.log(grandma);
 
     //contador e cookie principal
-    const counter = document.getElementById('counter')!;
-    const cookieImage = document.getElementById('cookieImage')!;
+    const counter = document.querySelector('#counter')!;
+    const cookieImage = document.querySelector('#cookieImage')!;
 
     //grandma preço quantidade=>
-    const grandmaCounter = document.getElementById('grandma-quantity')!;
-    const grdBuy1 = document.getElementById('buy-1-grandma')!;
-    const grdBuy5 = document.getElementById('buy-5-grandma')!;
-    const grdPrice = document.getElementById('grandma-price')!;
-
+    const grandmaCounter = document.querySelector('#grandma-quantity')!;
+    const grdBuy1 = document.querySelector('#buy-1-grandma')!;
+    const grdBuy5 = document.querySelector('#buy-5-grandma')!;
+    const grdPrice = document.querySelector('#grandma-price')!;
 
     function update(){
         counter.innerHTML = `${Math.round(cookie.quantity)}`;
@@ -49,7 +48,7 @@ console.log(grandma);
         grdPrice.innerHTML = `${Math.round(grandma.price)}`
         console.log(`${cookie.quantity}`)
     }
-
+    
     //função de gerar cookie clicando
     function click() {
         cookie.buy1();
