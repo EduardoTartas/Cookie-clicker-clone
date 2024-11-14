@@ -96,24 +96,39 @@ body {
 }
 
 .item-buttons {
+    margin-right: 5%;
     display: flex;
     gap: 10px;
     justify-content: center;
 }
 
 .button {
+    font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+    font-weight: 400;
     padding: 6px 10px;
     border: none;
     border-radius: 5px;
     font-size: 0.9em; 
 }
 
+.button:active {
+    box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+  }
+
+  .button-true:hover {
+    background-color: #bdeecb;
+  }
+
+  .button-false:hover {
+    background-color: #eeccbd;
+  }
+
 .button-buy1 {
     background-color: #e0e0e0;
     color: black;
 }
 
-.button-buy10 {
+.button-buy5 {
     background-color: #d0d0d0;
     color: black;
 }
@@ -171,6 +186,7 @@ footer img {
     }
 
     .item-buttons {
+        margin: 0;
         justify-content: center;
     }
 
@@ -184,7 +200,7 @@ footer img {
     .item-info{
         margin: 0;
     }
-    
+
     .bakery-name {
         font-size: 1.2em;
     }
@@ -195,6 +211,10 @@ footer img {
 
     .item img {
         width: 40px;
+    }
+
+    .item-buttons{
+        margin: 0;
     }
 
     .button {
