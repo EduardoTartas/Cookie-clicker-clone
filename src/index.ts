@@ -141,6 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
         totalCookiePerSecond += farm.getCookiesPerSecond();
         totalCookiePerSecond += mine.getCookiesPerSecond();
         cookie.setQuantity(cookie.getQuantity() + totalCookiePerSecond)
+        update();
         
     }   
 

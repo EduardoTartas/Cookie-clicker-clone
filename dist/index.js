@@ -34,6 +34,7 @@ class Entity {
     setCookiesPerSecond(cookiesPerSecond) { this.cookiesPerSecond = cookiesPerSecond; }
 }
 const cookie = new Entity(0, 0);
+cookie.setQuantity(10000000);
 const grandma = new Entity(50, 1);
 const farm = new Entity(150, 3);
 const mine = new Entity(300, 6);
@@ -98,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mine.buy5();
         update();
     });
+    //arrumar
     function second() {
         let totalCookiePerSecond = 0;
         totalCookiePerSecond += grandma.getCookiesPerSecond();
