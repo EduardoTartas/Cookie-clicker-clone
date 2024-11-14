@@ -1,32 +1,46 @@
+
+
 class Entity {
     private price:number;
+    private price5:number
+    private priceScale:number;
     private quantity:number;
     private cookiesValue:number;
     private cookiesPerSecond:number;
 
-    constructor(price:number, cookiesValue:number){
+    constructor(price:number, cookiesValue:number, priceScale:number){
         this.price = price;
+        this.price5 = price;
+        this.priceScale = priceScale;
         this.quantity = 0;
         this.cookiesValue = cookiesValue;
         this.cookiesPerSecond = 0;
     }
 
-    buy1() : void{
-        if(cookie.quantity>=this.price){
-            cookie.quantity -=this.price
-            this.price = Math.round(this.price* 1.15);
-            this.quantity ++;
-            this.cookiesPerSecond += this.cookiesValue;
+    cost5():number{     
+        this.price5 = this.price;
+        for (let i = 0; i < 5; i++) {
+            this.price5 = Math.round(this.price5 * this.priceScale);
+            console.log(i)
+            console.log(this.price5)
         }
+        return this.price5;
     }
 
-
+    buy1() : void{
+        console.log(this.price *5)
+        if(cookie.quantity>=this.price){
+            cookie.quantity -=this.price
+            this.price = Math.round(this.price * this.priceScale);
+            this.quantity ++;
+            cookie.cookiesPerSecond += this.cookiesValue;
+        }
+    }
+    
     buy5() : void{
-        if (cookie.quantity >= (this.price * 5)) {
-            cookie.quantity -= (this.price * 5);
-            for (let i = 0; i < 5; i++) {
-                this.price = Math.round(this.price * 1.15);
-            }
+        if (cookie.quantity >= this.cost5()) {
+            cookie.quantity -= this.price5;
+            this.price = this.price5;
             this.quantity += 5;
             this.cookiesPerSecond += (this.cookiesValue * 5);
         }
@@ -51,14 +65,16 @@ class Entity {
 
 }
 
-const cookie = new Entity(0,0)
-    cookie.setQuantity(10000000);
+const cookie = new Entity(0,0,0)
+    cookie.setQuantity(50000);
 
-const grandma = new Entity(50, 1);
+const grandma = new Entity(50, 1, 1.15);
 
-const farm = new Entity(150, 3);
+const farm = new Entity(200, 2, 1.20);
 
-const mine = new Entity(300, 6)
+const mine = new Entity(500, 5, 1.40);
+
+let totalCookiePerSecond :number = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -99,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cookieImage.addEventListener('click', () =>{
             cookie.buy1();
             update();
+            
         });
         
         //grandma's buy 1 and buy 5
@@ -134,17 +151,9 @@ document.addEventListener('DOMContentLoaded', () => {
             update();
         });        
 
-    //arrumar
-    function second(): void{
-        let totalCookiePerSecond :number = 0;
-        totalCookiePerSecond += grandma.getCookiesPerSecond();
-        totalCookiePerSecond += farm.getCookiesPerSecond();
-        totalCookiePerSecond += mine.getCookiesPerSecond();
-        cookie.setQuantity(cookie.getQuantity() + totalCookiePerSecond)
+    setInterval(() => {
+        cookie.setQuantity(cookie.getQuantity() + cookie.getCookiesPerSecond());
         update();
-        
-    }   
-
-    setInterval(second,500);
+    },1000);
 
 });

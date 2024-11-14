@@ -15,7 +15,7 @@ body {
     gap: 10%;
     align-items: center;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     background-color: #4682a9;
     padding: 20px;
     border-radius: 8px;
@@ -56,11 +56,12 @@ body {
     border-radius: 8px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    ;
 }
 
 .item-info {
     display: flex;
+    margin-left: 5%;
     align-items: center;
     font-size: 1.2em;
     flex: 1;
@@ -84,7 +85,7 @@ body {
     align-items: center;
     font-size: 1.2em;
     color: #ffffff;
-    margin-right: 20px;
+    margin-right: px;
 }
 
 .cookie-icon {
@@ -97,6 +98,7 @@ body {
 .item-buttons {
     display: flex;
     gap: 10px;
+    justify-content: center;
 }
 
 .button {
@@ -164,6 +166,7 @@ footer img {
     }
 
     .item-info {
+        margin: 0;
         margin-bottom: 10px;
     }
 
@@ -177,6 +180,11 @@ footer img {
 }
 
 @media (max-width: 480px) {
+
+    .item-info{
+        margin: 0;
+    }
+    
     .bakery-name {
         font-size: 1.2em;
     }
