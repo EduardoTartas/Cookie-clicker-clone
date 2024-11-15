@@ -66,7 +66,6 @@ class Entity {
 }
 
 const cookie = new Entity(0,0,0)
-    cookie.setQuantity(49000000);
 
 const grandma = new Entity(50, 1, 1.15);
 
