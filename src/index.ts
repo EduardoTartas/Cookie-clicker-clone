@@ -1,5 +1,3 @@
-
-
 class Entity {
     private price:number;
     private price5:number
@@ -16,6 +14,10 @@ class Entity {
         this.cookiesValue = cookiesValue;
         this.cookiesPerSecond = 0;
     }
+
+    
+
+
 
     cost5():number{     
         this.price5 = this.price;
@@ -35,12 +37,12 @@ class Entity {
     }
     
     buy5() : void{
-        if (cookie.quantity >= this.cost5()) {
+       
             cookie.quantity -= this.price5;
             this.price = this.price5;
             this.quantity += 5;
             cookie.cookiesPerSecond += (this.cookiesValue * 5);
-        }
+            this.cost5();
     }
 
     public getPrice(): number {return this.price;}
@@ -134,20 +136,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
          grdBuy1.addEventListener('mouseover', () => {
             if(cookie.getQuantity()>= grandma.getPrice()){
-                grdBuy1.classList.remove('button-false')
-                grdBuy1.classList.add('button-true')
+                grdBuy1.classList.add('button-active')
+                grdBuy1.classList.remove('button-false-hover')
+                grdBuy1.classList.add('button-true-hover')
             }
             else{
-                grdBuy1.classList.remove('button-true')
-                grdBuy1.classList.add('button-false')  
+                grdBuy1.classList.remove('button-active')
+                grdBuy1.classList.remove('button-true-hover')
+                grdBuy1.classList.add('button-false-hover')  
             }
-           
         })
 
-        grdBuy5.addEventListener('click', ()=>{
+        grdBuy5.addEventListener('click', ()=> {
             grandma.buy5();
             update();
-        });         
+        });
+
+        grdBuy5.addEventListener('mouseover', () => {
+            if(cookie.getQuantity()>= grandma.cost5()){
+                grdBuy5.classList.add('button-active')
+                grdBuy5.classList.remove('button-false')
+                grdBuy5.classList.add('button-true')
+            }
+            else{
+                grdBuy5.classList.remove('button-active')
+                grdBuy5.classList.remove('button-true')
+                grdBuy5.classList.add('button-false')  
+            }
+        });
+        
+        
+           
 
        
 

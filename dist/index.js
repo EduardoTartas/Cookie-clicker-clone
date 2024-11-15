@@ -24,12 +24,11 @@ class Entity {
         }
     }
     buy5() {
-        if (cookie.quantity >= this.cost5()) {
-            cookie.quantity -= this.price5;
-            this.price = this.price5;
-            this.quantity += 5;
-            cookie.cookiesPerSecond += (this.cookiesValue * 5);
-        }
+        cookie.quantity -= this.price5;
+        this.price = this.price5;
+        this.quantity += 5;
+        cookie.cookiesPerSecond += (this.cookiesValue * 5);
+        this.cost5();
     }
     getPrice() { return this.price; }
     getQuantity() { return this.quantity; }
@@ -94,17 +93,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     grdBuy1.addEventListener('mouseover', () => {
         if (cookie.getQuantity() >= grandma.getPrice()) {
-            grdBuy1.classList.remove('button-false');
-            grdBuy1.classList.add('button-true');
+            grdBuy1.classList.add('button-active');
+            grdBuy1.classList.remove('button-false-hover');
+            grdBuy1.classList.add('button-true-hover');
         }
         else {
-            grdBuy1.classList.remove('button-true');
-            grdBuy1.classList.add('button-false');
+            grdBuy1.classList.remove('button-active');
+            grdBuy1.classList.remove('button-true-hover');
+            grdBuy1.classList.add('button-false-hover');
         }
     });
     grdBuy5.addEventListener('click', () => {
         grandma.buy5();
         update();
+    });
+    grdBuy5.addEventListener('mouseover', () => {
+        if (cookie.getQuantity() >= grandma.cost5()) {
+            grdBuy5.classList.add('button-active');
+            grdBuy5.classList.remove('button-false');
+            grdBuy5.classList.add('button-true');
+        }
+        else {
+            grdBuy5.classList.remove('button-active');
+            grdBuy5.classList.remove('button-true');
+            grdBuy5.classList.add('button-false');
+        }
     });
     //farm's buy 1 and buy 5
     farmBuy1.addEventListener('click', () => {
