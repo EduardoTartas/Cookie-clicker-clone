@@ -112,6 +112,7 @@ body {
 }
 
 .button {
+    cursor: pointer;
     font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
     font-weight: 400;
     padding: 6px 10px;
