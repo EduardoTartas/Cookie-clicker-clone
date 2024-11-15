@@ -24,11 +24,13 @@ class Entity {
         }
     }
     buy5() {
-        cookie.quantity -= this.price5;
-        this.price = this.price5;
-        this.quantity += 5;
-        cookie.cookiesPerSecond += (this.cookiesValue * 5);
-        this.cost5();
+        if (cookie.quantity >= this.cost5()) {
+            cookie.quantity -= this.price5;
+            this.price = this.price5;
+            this.quantity += 5;
+            cookie.cookiesPerSecond += (this.cookiesValue * 5);
+            this.cost5();
+        }
     }
     getPrice() { return this.price; }
     getQuantity() { return this.quantity; }
@@ -40,10 +42,10 @@ class Entity {
     setCookiesPerSecond(cookiesPerSecond) { this.cookiesPerSecond = cookiesPerSecond; }
 }
 const cookie = new Entity(0, 0, 0);
-cookie.setQuantity(49);
+cookie.setQuantity(49000000);
 const grandma = new Entity(50, 1, 1.15);
 const farm = new Entity(200, 2, 1.20);
-const mine = new Entity(500, 5, 1.40);
+const mine = new Entity(500, 4, 1.40);
 let totalCookiePerSecond = 0;
 document.addEventListener('DOMContentLoaded', () => {
     //cookie's querySelector
@@ -110,13 +112,13 @@ document.addEventListener('DOMContentLoaded', () => {
     grdBuy5.addEventListener('mouseover', () => {
         if (cookie.getQuantity() >= grandma.cost5()) {
             grdBuy5.classList.add('button-active');
-            grdBuy5.classList.remove('button-false');
-            grdBuy5.classList.add('button-true');
+            grdBuy5.classList.remove('button-false-hover');
+            grdBuy5.classList.add('button-true-hover');
         }
         else {
             grdBuy5.classList.remove('button-active');
-            grdBuy5.classList.remove('button-true');
-            grdBuy5.classList.add('button-false');
+            grdBuy5.classList.remove('button-true-hover');
+            grdBuy5.classList.add('button-false-hover');
         }
     });
     //farm's buy 1 and buy 5
@@ -124,21 +126,69 @@ document.addEventListener('DOMContentLoaded', () => {
         farm.buy1();
         update();
     });
+    farmBuy1.addEventListener('mouseover', () => {
+        if (cookie.getQuantity() >= farm.getPrice()) {
+            farmBuy1.classList.add('button-active');
+            farmBuy1.classList.remove('button-false-hover');
+            farmBuy1.classList.add('button-true-hover');
+        }
+        else {
+            farmBuy1.classList.remove('button-active');
+            farmBuy1.classList.remove('button-true-hover');
+            farmBuy1.classList.add('button-false-hover');
+        }
+    });
     farmBuy5.addEventListener('click', () => {
         farm.buy5();
         update();
+    });
+    farmBuy5.addEventListener('mouseover', () => {
+        if (cookie.getQuantity() >= farm.cost5()) {
+            farmBuy5.classList.add('button-active');
+            farmBuy5.classList.remove('button-false-hover');
+            farmBuy5.classList.add('button-true-hover');
+        }
+        else {
+            farmBuy5.classList.remove('button-active');
+            farmBuy5.classList.remove('button-true-hover');
+            farmBuy5.classList.add('button-false-hover');
+        }
     });
     //farm's buy 1 and buy 5
     mineBuy1.addEventListener('click', () => {
         mine.buy1();
         update();
     });
+    mineBuy1.addEventListener('mouseover', () => {
+        if (cookie.getQuantity() >= farm.getPrice()) {
+            mineBuy1.classList.add('button-active');
+            mineBuy1.classList.remove('button-false-hover');
+            mineBuy1.classList.add('button-true-hover');
+        }
+        else {
+            mineBuy1.classList.remove('button-active');
+            mineBuy1.classList.remove('button-true-hover');
+            mineBuy1.classList.add('button-false-hover');
+        }
+    });
     mineBuy5.addEventListener('click', () => {
         mine.buy5();
         update();
     });
+    mineBuy5.addEventListener('mouseover', () => {
+        if (cookie.getQuantity() >= mine.cost5()) {
+            mineBuy5.classList.add('button-active');
+            mineBuy5.classList.remove('button-false-hover');
+            mineBuy5.classList.add('button-true-hover');
+        }
+        else {
+            mineBuy5.classList.remove('button-active');
+            mineBuy5.classList.remove('button-true-hover');
+            mineBuy5.classList.add('button-false-hover');
+        }
+    });
     setInterval(() => {
         cookie.setQuantity(cookie.getQuantity() + cookie.getCookiesPerSecond());
         update();
-    }, 1000);
+    }, 500);
 });
