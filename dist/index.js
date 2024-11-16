@@ -1,51 +1,10 @@
 "use strict";
-class Entity {
-    constructor(price, cookiesValue, priceScale) {
-        this.price = price;
-        this.price5 = price;
-        this.priceScale = priceScale;
-        this.quantity = 0;
-        this.cookiesValue = cookiesValue;
-        this.cookiesPerSecond = 0;
-    }
-    cost5() {
-        this.price5 = this.price;
-        for (let i = 0; i < 5; i++) {
-            this.price5 = Math.round(this.price5 * this.priceScale);
-        }
-        return this.price5;
-    }
-    buy1() {
-        if (cookie.quantity >= this.price) {
-            cookie.quantity -= this.price;
-            this.price = Math.round(this.price * this.priceScale);
-            this.quantity++;
-            cookie.cookiesPerSecond += this.cookiesValue;
-        }
-    }
-    buy5() {
-        if (cookie.quantity >= this.cost5()) {
-            cookie.quantity -= this.price5;
-            this.price = this.price5;
-            this.quantity += 5;
-            cookie.cookiesPerSecond += (this.cookiesValue * 5);
-            this.cost5();
-        }
-    }
-    getPrice() { return this.price; }
-    getQuantity() { return this.quantity; }
-    getCookiesValue() { return this.cookiesValue; }
-    getCookiesPerSecond() { return this.cookiesPerSecond; }
-    setPrice(price) { this.price = price; }
-    setQuantity(quantity) { this.quantity = quantity; }
-    setCookiesValue(cookiesValue) { this.cookiesValue = cookiesValue; }
-    setCookiesPerSecond(cookiesPerSecond) { this.cookiesPerSecond = cookiesPerSecond; }
-}
-const cookie = new Entity(0, 0, 0);
-const grandma = new Entity(50, 1, 1.15);
-const farm = new Entity(200, 2, 1.20);
-const mine = new Entity(500, 4, 1.40);
-let totalCookiePerSecond = 0;
+Object.defineProperty(exports, "__esModule", { value: true });
+const Entity_1 = require("./Entity");
+const grandma = new Entity_1.Entity(50, 1, 1.15);
+const farm = new Entity_1.Entity(200, 2, 1.20);
+const mine = new Entity_1.Entity(500, 4, 1.40);
+
 document.addEventListener('DOMContentLoaded', () => {
     //cookie's querySelector
     const counter = document.querySelector('#counter');
@@ -68,10 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const minePrice5 = document.querySelector('#mine-price5');
     const mineBuy1 = document.querySelector('#buy-1-mine');
     const mineBuy5 = document.querySelector('#buy-5-mine');
-    const hover = document.querySelector('.button:hover');
     //status' update
     function update() {
-        counter.innerHTML = `${cookie.getQuantity()}`;
+        counter.innerHTML = `${Entity_1.cookie.getQuantity()}`;
         grdQuantity.innerHTML = `${grandma.getQuantity()}`;
         grdPrice.innerHTML = `${grandma.getPrice()}`;
         grdPrice5.innerHTML = `${grandma.cost5()}`;
@@ -84,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     //cookie's click
     cookieImage.addEventListener('click', () => {
-        cookie.buy1();
+        Entity_1.cookie.buy1();
         update();
     });
     //grandma's buy 1 and buy 5
@@ -92,8 +50,13 @@ document.addEventListener('DOMContentLoaded', () => {
         grandma.buy1();
         update();
     });
+    grdBuy5.addEventListener('click', () => {
+        grandma.buy5();
+        update();
+    });
+    //grandma's hover effect
     grdBuy1.addEventListener('mouseover', () => {
-        if (cookie.getQuantity() >= grandma.getPrice()) {
+        if (Entity_1.cookie.getQuantity() >= grandma.getPrice()) {
             grdBuy1.classList.add('button-active');
             grdBuy1.classList.remove('button-false-hover');
             grdBuy1.classList.add('button-true-hover');
@@ -104,12 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
             grdBuy1.classList.add('button-false-hover');
         }
     });
-    grdBuy5.addEventListener('click', () => {
-        grandma.buy5();
-        update();
-    });
     grdBuy5.addEventListener('mouseover', () => {
-        if (cookie.getQuantity() >= grandma.cost5()) {
+        if (Entity_1.cookie.getQuantity() >= grandma.cost5()) {
             grdBuy5.classList.add('button-active');
             grdBuy5.classList.remove('button-false-hover');
             grdBuy5.classList.add('button-true-hover');
@@ -125,8 +84,13 @@ document.addEventListener('DOMContentLoaded', () => {
         farm.buy1();
         update();
     });
+    farmBuy5.addEventListener('click', () => {
+        farm.buy5();
+        update();
+    });
+    //farm's hover effect
     farmBuy1.addEventListener('mouseover', () => {
-        if (cookie.getQuantity() >= farm.getPrice()) {
+        if (Entity_1.cookie.getQuantity() >= farm.getPrice()) {
             farmBuy1.classList.add('button-active');
             farmBuy1.classList.remove('button-false-hover');
             farmBuy1.classList.add('button-true-hover');
@@ -137,12 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
             farmBuy1.classList.add('button-false-hover');
         }
     });
-    farmBuy5.addEventListener('click', () => {
-        farm.buy5();
-        update();
-    });
     farmBuy5.addEventListener('mouseover', () => {
-        if (cookie.getQuantity() >= farm.cost5()) {
+        if (Entity_1.cookie.getQuantity() >= farm.cost5()) {
             farmBuy5.classList.add('button-active');
             farmBuy5.classList.remove('button-false-hover');
             farmBuy5.classList.add('button-true-hover');
@@ -153,13 +113,18 @@ document.addEventListener('DOMContentLoaded', () => {
             farmBuy5.classList.add('button-false-hover');
         }
     });
-    //farm's buy 1 and buy 5
+    //mine's buy 1 and buy 5
     mineBuy1.addEventListener('click', () => {
         mine.buy1();
         update();
     });
+    mineBuy5.addEventListener('click', () => {
+        mine.buy5();
+        update();
+    });
+    //farm's hover effect
     mineBuy1.addEventListener('mouseover', () => {
-        if (cookie.getQuantity() >= farm.getPrice()) {
+        if (Entity_1.cookie.getQuantity() >= farm.getPrice()) {
             mineBuy1.classList.add('button-active');
             mineBuy1.classList.remove('button-false-hover');
             mineBuy1.classList.add('button-true-hover');
@@ -170,12 +135,8 @@ document.addEventListener('DOMContentLoaded', () => {
             mineBuy1.classList.add('button-false-hover');
         }
     });
-    mineBuy5.addEventListener('click', () => {
-        mine.buy5();
-        update();
-    });
     mineBuy5.addEventListener('mouseover', () => {
-        if (cookie.getQuantity() >= mine.cost5()) {
+        if (Entity_1.cookie.getQuantity() >= mine.cost5()) {
             mineBuy5.classList.add('button-active');
             mineBuy5.classList.remove('button-false-hover');
             mineBuy5.classList.add('button-true-hover');
@@ -186,8 +147,9 @@ document.addEventListener('DOMContentLoaded', () => {
             mineBuy5.classList.add('button-false-hover');
         }
     });
+    //add cookies per second to the total
     setInterval(() => {
-        cookie.setQuantity(cookie.getQuantity() + cookie.getCookiesPerSecond());
+        Entity_1.cookie.setQuantity(Entity_1.cookie.getQuantity() + Entity_1.cookie.getCookiesPerSecond());
         update();
     }, 500);
 });
