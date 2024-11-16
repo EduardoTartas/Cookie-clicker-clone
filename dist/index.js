@@ -42,7 +42,6 @@ class Entity {
     setCookiesPerSecond(cookiesPerSecond) { this.cookiesPerSecond = cookiesPerSecond; }
 }
 const cookie = new Entity(0, 0, 0);
-cookie.setQuantity(49000000);
 const grandma = new Entity(50, 1, 1.15);
 const farm = new Entity(200, 2, 1.20);
 const mine = new Entity(500, 4, 1.40);
