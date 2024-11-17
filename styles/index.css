@@ -9,11 +9,10 @@ body {
     background-color: #000000e5;
     padding-bottom: 50px;
     padding-top: 0;
-    overflow: hidden;
+    overflow: hidden; /* Sem scroll por padrão */
 }
 
 .container {
-    max-height: 90vh;
     gap: 10%;
     align-items: center;
     display: flex;
@@ -23,6 +22,7 @@ body {
     border-radius: 8px;
     width: 90%;
     max-width: 800px;
+    min-width: 320px;
     box-sizing: border-box;
     padding-bottom: 50px;
     margin-bottom: 0;
@@ -41,7 +41,7 @@ body {
 }
 
 .cookie {
-    cursor:pointer;
+    cursor: pointer;
     width: 100%;
     max-width: 200px;
     height: auto;
@@ -60,7 +60,6 @@ body {
     border-radius: 8px;
     display: flex;
     align-items: center;
-    ;
 }
 
 .item-info {
@@ -84,16 +83,13 @@ body {
 }
 
 .price-box {
-    margin-right: 5;
     display: flex;
     align-items: center;
     font-size: 1.2em;
     color: #ffffff;
-    margin-right: px;
-    min-width: 50px;
     text-align: center;
     justify-content: center;
-    align-items: center;
+    min-width: 50px;
 }
 
 .cookie-icon {
@@ -113,25 +109,25 @@ body {
 
 .button {
     cursor: pointer;
-    font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     font-weight: 400;
     padding: 6px 10px;
     border: none;
     border-radius: 5px;
-    font-size: 0.9em; 
+    font-size: 0.9em;
 }
 
 .button-active:active {
     box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
-  }
+}
 
-  .button-true-hover:hover {
+.button-true-hover:hover {
     background-color: #bdeecb;
-  }
+}
 
-  .button-false-hover:hover {
+.button-false-hover:hover {
     background-color: #eeccbd;
-  }
+}
 
 .button-buy1 {
     background-color: #e0e0e0;
@@ -155,32 +151,40 @@ footer {
     background-color: #33333300;
     color: #e7e7e7;
     text-align: center;
-    width: 100%;
-    padding: 10px 0;
+    width: auto;
+    padding: 10px;
     font-size: 1em;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center; /* Centraliza os ícones por padrão */
     gap: 10px;
-    position: absolute;
-    top: auto;
-    right: 10px;
+    position: absolute; /* Fica fixo no canto inferior por padrão */
     bottom: 10px;
+    right: 10px; /* Ajuste para o canto inferior direito */
     z-index: 30;
-    margin-top: 0;
 }
 
+/* Estilo dos ícones no footer */
 footer img {
     width: 40px;
     height: 40px;
 }
 
+/* Responsividade para telas menores */
 @media (max-width: 768px) {
+    body {
+        overflow-y: auto; /* Permite scroll apenas no layout mobile */
+    }
+
     .container {
-        max-width: 100%;
-        flex-direction: column;
-        align-items: center;
-        padding-bottom: 80px;
-        margin-bottom: 40px;
+        max-height: none; /* Remove restrições de altura */
+        margin-bottom: 60px; /* Espaço extra para o footer */
+    }
+
+    footer {
+        position: static; /* Footer abaixo do container */
+        margin-top: 20px; /* Espaço visual entre o container e o footer */
+        justify-content: center; /* Centraliza no mobile */
+        width: 100%; /* Ocupa toda a largura no mobile */
     }
 
     .left-panel, .right-panel {
@@ -196,47 +200,32 @@ footer img {
     .item-info {
         margin: 0;
         margin-bottom: 10px;
+        text-align: center;
     }
 
     .item-buttons {
         margin: 0;
         justify-content: center;
     }
-
-    .bakery-name {
-        font-size: 1.5em;
-    }
 }
 
 @media (max-width: 480px) {
-
     .container {
-        max-width: 100%;
-        margin-bottom: 60px;
-    }
-
-    .item-info{
-        margin: 0;
-    }
-
-    .bakery-name {
-        font-size: 1.2em;
-    }
-
-    .stats {
-        font-size: 1em;
+        width: 100%;
+        margin-bottom: 20px;
     }
 
     .item img {
         width: 40px;
     }
 
-    .item-buttons{
+    .item-info {
         margin: 0;
+        text-align: center;
     }
 
     .button {
-        padding: 6px 10px;
-        font-size: 0.9em;
+        padding: 5px 8px;
+        font-size: 0.8em;
     }
 }

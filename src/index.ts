@@ -65,7 +65,7 @@ const farm = new Entity(200, 2, 1.20);
 const mine = new Entity(500, 4, 1.40);
 
 document.addEventListener('DOMContentLoaded', () => {
-
+    
     // Selectors for cookie elements
     const counter     = document.querySelector('#counter')!;
     const cookieImage = document.querySelector('#cookieImage')!;
