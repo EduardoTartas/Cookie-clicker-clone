@@ -13,7 +13,6 @@ export class Entity {
         this.quantity = 0;
         this.cookiesValue = cookiesValue;
         this.cookiesPerSecond = 0;
-        
     }
 
     cost5(): number {
@@ -42,7 +41,7 @@ export class Entity {
             this.cost5();
         }
     }
-    
+
     public getPrice(): number { return this.price; }
 
     public getQuantity(): number { return this.quantity; }
@@ -61,7 +60,6 @@ export class Entity {
 }
 
 export const cookie  = new Entity(0, 0, 0);
-
 export const grandma = new Entity(50, 1, 1.15);
-export const farm = new Entity(200, 4, 1.20);
-export const mine = new Entity(500, 8, 1.40);
+export const farm    = new Entity(200, 4, 1.20);
+export const mine    = new Entity(500, 8, 1.40);

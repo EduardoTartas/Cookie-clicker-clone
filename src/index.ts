@@ -1,14 +1,12 @@
 import { Entity, cookie, grandma, farm, mine } from './Entity.js';
 
-//Function that save the infos of the Entities
-function saveInfos(): void{
-    cookie.setQuantity(cookie.getQuantity() + cookie.getCookiesPerSecond());
-
+// Function that saves the infos of the Entities
+function saveInfos(): void {
     localStorage.setItem('counter', cookie.getQuantity().toString());
     localStorage.setItem('cookiePerSecond', cookie.getCookiesPerSecond().toString());
 
     localStorage.setItem('grdPrice', grandma.getPrice().toString());
-    localStorage.setItem('grdQuantity', grandma.getQuantity().toString())
+    localStorage.setItem('grdQuantity', grandma.getQuantity().toString());
 
     localStorage.setItem('farmPrice', farm.getPrice().toString());
     localStorage.setItem('farmQuantity', farm.getQuantity().toString());
@@ -17,10 +15,10 @@ function saveInfos(): void{
     localStorage.setItem('mineQuantity', mine.getQuantity().toString());
 }
 
-//Function that load the infos of Entities
-function loadInfos(): void{
+// Function that loads the infos of Entities
+function loadInfos(): void {
     cookie.setQuantity(parseInt(localStorage.counter));
-    cookie.setCookiesPerSecond(parseInt(localStorage.cookiePerSecond))
+    cookie.setCookiesPerSecond(parseInt(localStorage.cookiePerSecond));
     
     grandma.setPrice(parseInt(localStorage.grdPrice));
     grandma.setQuantity(parseInt(localStorage.grdQuantity));
@@ -32,60 +30,57 @@ function loadInfos(): void{
     mine.setQuantity(parseInt(localStorage.mineQuantity));
 }
 
-function askToLoadInfos(){
-    
-    if(parseInt(localStorage.counter)!=0  && confirm("Do you want to load the old infos?")){
+function askToLoadInfos() {
+    if (parseInt(localStorage.counter) != 0 && confirm("Do you want to load the old infos?")) {
         loadInfos();
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     askToLoadInfos();
-    //load the infos
 
     // Selectors for cookie elements
-    const counter = document.querySelector('#counter')!;
+    const counter     = document.querySelector('#counter')!;
     const cookieImage = document.querySelector('#cookieImage')!;
 
     // Selectors for grandma elements
     const grdQuantity = document.querySelector('#grandma-quantity')!;
-    const grdPrice = document.querySelector('#grandma-price')!;
-    const grdPrice5 = document.querySelector('#grandma-price5')!;
-    const grdBuy1 = document.querySelector('#buy-1-grandma')!;
-    const grdBuy5 = document.querySelector('#buy-5-grandma')!;
+    const grdPrice    = document.querySelector('#grandma-price')!;
+    const grdPrice5   = document.querySelector('#grandma-price5')!;
+    const grdBuy1     = document.querySelector('#buy-1-grandma')!;
+    const grdBuy5     = document.querySelector('#buy-5-grandma')!;
 
     // Selectors for farm elements
     const farmQuantity = document.querySelector('#farm-quantity')!;
-    const farmPrice = document.querySelector('#farm-price')!;
-    const farmPrice5 = document.querySelector('#farm-price5')!;
-    const farmBuy1 = document.querySelector('#buy-1-farm')!;
-    const farmBuy5 = document.querySelector('#buy-5-farm')!;
+    const farmPrice    = document.querySelector('#farm-price')!;
+    const farmPrice5   = document.querySelector('#farm-price5')!;
+    const farmBuy1     = document.querySelector('#buy-1-farm')!;
+    const farmBuy5     = document.querySelector('#buy-5-farm')!;
 
     // Selectors for mine elements
     const mineQuantity = document.querySelector('#mine-quantity')!;
-    const minePrice = document.querySelector('#mine-price')!;
-    const minePrice5 = document.querySelector('#mine-price5')!;
-    const mineBuy1 = document.querySelector('#buy-1-mine')!;
-    const mineBuy5 = document.querySelector('#buy-5-mine')!;
+    const minePrice    = document.querySelector('#mine-price')!;
+    const minePrice5   = document.querySelector('#mine-price5')!;
+    const mineBuy1     = document.querySelector('#buy-1-mine')!;
+    const mineBuy5     = document.querySelector('#buy-5-mine')!;
 
     // Function to update the UI with the latest values
     function update(): void {
-        counter.innerHTML = `${cookie.getQuantity()}`;
+        counter.innerHTML      = `${cookie.getQuantity()}`;
 
-        grdQuantity.innerHTML = `${grandma.getQuantity()}`;
-        grdPrice.innerHTML = `${grandma.getPrice()}`;
-        grdPrice5.innerHTML = `${grandma.cost5()}`;
+        grdQuantity.innerHTML  = `${grandma.getQuantity()}`;
+        grdPrice.innerHTML     = `${grandma.getPrice()}`;
+        grdPrice5.innerHTML    = `${grandma.cost5()}`;
 
         farmQuantity.innerHTML = `${farm.getQuantity()}`;
-        farmPrice.innerHTML = `${farm.getPrice()}`;
-        farmPrice5.innerHTML = `${farm.cost5()}`;
+        farmPrice.innerHTML    = `${farm.getPrice()}`;
+        farmPrice5.innerHTML   = `${farm.cost5()}`;
 
         mineQuantity.innerHTML = `${mine.getQuantity()}`;
-        minePrice.innerHTML = `${mine.getPrice()}`;
-        minePrice5.innerHTML = `${mine.cost5()}`;
-      
+        minePrice.innerHTML    = `${mine.getPrice()}`;
+        minePrice5.innerHTML   = `${mine.cost5()}`;
     }
-        
+
     // Event listener for cookie click
     cookieImage.addEventListener('click', () => {
         cookie.buy1();
@@ -199,9 +194,10 @@ document.addEventListener('DOMContentLoaded', () => {
             mineBuy5.classList.add('button-false-hover');
         }
     });
-    
+
     // Interval to add cookies per second to the total
     setInterval(() => {
+        cookie.setQuantity(cookie.getQuantity() + cookie.getCookiesPerSecond());
         saveInfos();
         update();
     }, 500);

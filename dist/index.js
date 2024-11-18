@@ -1,7 +1,6 @@
 import { cookie, grandma, farm, mine } from './Entity.js';
-//Function that save the infos of the Entities
+// Function that saves the infos of the Entities
 function saveInfos() {
-    cookie.setQuantity(cookie.getQuantity() + cookie.getCookiesPerSecond());
     localStorage.setItem('counter', cookie.getQuantity().toString());
     localStorage.setItem('cookiePerSecond', cookie.getCookiesPerSecond().toString());
     localStorage.setItem('grdPrice', grandma.getPrice().toString());
@@ -11,7 +10,7 @@ function saveInfos() {
     localStorage.setItem('minePrice', mine.getPrice().toString());
     localStorage.setItem('mineQuantity', mine.getQuantity().toString());
 }
-//Function that load the infos of Entities
+// Function that loads the infos of Entities
 function loadInfos() {
     cookie.setQuantity(parseInt(localStorage.counter));
     cookie.setCookiesPerSecond(parseInt(localStorage.cookiePerSecond));
@@ -29,7 +28,6 @@ function askToLoadInfos() {
 }
 document.addEventListener('DOMContentLoaded', () => {
     askToLoadInfos();
-    //load the infos
     // Selectors for cookie elements
     const counter = document.querySelector('#counter');
     const cookieImage = document.querySelector('#cookieImage');
@@ -173,6 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     // Interval to add cookies per second to the total
     setInterval(() => {
+        cookie.setQuantity(cookie.getQuantity() + cookie.getCookiesPerSecond());
         saveInfos();
         update();
     }, 500);
