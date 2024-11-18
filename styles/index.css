@@ -155,11 +155,10 @@ footer {
     padding: 10px;
     font-size: 1em;
     display: flex;
-    justify-content: center; /* Centraliza os ícones por padrão */
-    gap: 10px;
-    position: absolute; /* Fica fixo no canto inferior por padrão */
+    justify-content: center; 
+    position: absolute; 
     bottom: 10px;
-    right: 10px; /* Ajuste para o canto inferior direito */
+    right: 10px; 
     z-index: 30;
 }
 
@@ -172,19 +171,19 @@ footer img {
 /* Responsividade para telas menores */
 @media (max-width: 768px) {
     body {
-        overflow-y: auto; /* Permite scroll apenas no layout mobile */
+        overflow-y: auto; 
     }
 
     .container {
-        max-height: none; /* Remove restrições de altura */
-        margin-bottom: 60px; /* Espaço extra para o footer */
+        max-height: none; 
+        margin-bottom: 60px; 
     }
 
     footer {
-        position: static; /* Footer abaixo do container */
-        margin-top: 20px; /* Espaço visual entre o container e o footer */
-        justify-content: center; /* Centraliza no mobile */
-        width: 100%; /* Ocupa toda a largura no mobile */
+        position: static; 
+        margin-top: 20px; 
+        justify-content: center; 
+        width: 100%; 
     }
 
     .left-panel, .right-panel {

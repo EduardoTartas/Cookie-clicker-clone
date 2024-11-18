@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "clone do jogo cookie cliker",
   "main": "index.js",
-"scripts": {
-    "dev":"nodemon src/index.ts",
+  "scripts": {
+    "dev": "nodemon src/index.ts",
     "start": "node dist/index.js",
     "build": "tsc"
   },
