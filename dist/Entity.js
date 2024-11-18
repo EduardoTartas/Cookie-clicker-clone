@@ -41,3 +41,6 @@ export class Entity {
     setCookiesPerSecond(cookiesPerSecond) { this.cookiesPerSecond = cookiesPerSecond; }
 }
 export const cookie = new Entity(0, 0, 0);
+export const grandma = new Entity(50, 1, 1.15);
+export const farm = new Entity(200, 4, 1.20);
+export const mine = new Entity(500, 8, 1.40);

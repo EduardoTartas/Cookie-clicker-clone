@@ -1,8 +1,30 @@
-import { Entity, cookie } from './Entity.js';
-const grandma = new Entity(50, 1, 1.15);
-const farm = new Entity(200, 2, 1.20);
-const mine = new Entity(500, 4, 1.40);
+import { cookie, grandma, farm, mine } from './Entity.js';
+//Function that load the infos of Entitys
+function loadInfos() {
+    cookie.setQuantity(parseInt(localStorage.counter));
+    cookie.setCookiesPerSecond(parseInt(localStorage.cookiePerSecond));
+    grandma.setPrice(parseInt(localStorage.grdPrice));
+    grandma.setQuantity(parseInt(localStorage.grdQuantity));
+    farm.setPrice(parseInt(localStorage.farmPrice));
+    farm.setQuantity(parseInt(localStorage.farmQuantity));
+    mine.setPrice(parseInt(localStorage.minePrice));
+    mine.setQuantity(parseInt(localStorage.mineQuantity));
+}
+//Function that save the infos of the Entitys
+function saveInfos() {
+    cookie.setQuantity(cookie.getQuantity() + cookie.getCookiesPerSecond());
+    localStorage.setItem('counter', cookie.getQuantity().toString());
+    localStorage.setItem('cookiePerSecond', cookie.getCookiesPerSecond().toString());
+    localStorage.setItem('grdPrice', grandma.getPrice().toString());
+    localStorage.setItem('grdQuantity', grandma.getQuantity().toString());
+    localStorage.setItem('farmPrice', farm.getPrice().toString());
+    localStorage.setItem('farmQuantity', farm.getQuantity().toString());
+    localStorage.setItem('minePrice', mine.getPrice().toString());
+    localStorage.setItem('mineQuantity', mine.getQuantity().toString());
+}
 document.addEventListener('DOMContentLoaded', () => {
+    //load the infos
+    loadInfos();
     // Selectors for cookie elements
     const counter = document.querySelector('#counter');
     const cookieImage = document.querySelector('#cookieImage');
@@ -146,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     // Interval to add cookies per second to the total
     setInterval(() => {
-        cookie.setQuantity(cookie.getQuantity() + cookie.getCookiesPerSecond());
+        saveInfos();
         update();
     }, 500);
 });
