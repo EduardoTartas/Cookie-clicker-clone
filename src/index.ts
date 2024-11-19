@@ -34,15 +34,13 @@ function loadInfos(): void {
 function askToLoadInfos() {
     if (localStorage.getItem("counter") != null && confirm("Do you want to load the old infos?")) {
         loadInfos();
-    } else {
-        saveInfos();
-    }
+    } else saveInfos();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    askToLoadInfos();
-    console.log(firstAcess);
 
+    askToLoadInfos();
+    
     // Selectors for cookie elements
     const counter     = document.querySelector('#counter')!;
     const cookieImage = document.querySelector('#cookieImage') as HTMLImageElement;
@@ -84,6 +82,8 @@ document.addEventListener('DOMContentLoaded', () => {
         minePrice.innerHTML    = `${mine.getPrice()}`;
         minePrice5.innerHTML   = `${mine.cost5()}`;
     }
+
+   
 
     // Function to handle upscale animation
     function upscaleAnimation(element: HTMLElement): void {

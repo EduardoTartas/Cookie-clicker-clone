@@ -26,13 +26,11 @@ function askToLoadInfos() {
     if (localStorage.getItem("counter") != null && confirm("Do you want to load the old infos?")) {
         loadInfos();
     }
-    else {
+    else
         saveInfos();
-    }
 }
 document.addEventListener('DOMContentLoaded', () => {
     askToLoadInfos();
-    console.log(firstAcess);
     // Selectors for cookie elements
     const counter = document.querySelector('#counter');
     const cookieImage = document.querySelector('#cookieImage');
