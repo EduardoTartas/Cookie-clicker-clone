@@ -1,7 +1,7 @@
 # Cookie Clicker Clone
 
 <p align="center">
-  <img src="Cookie-Clicker.jpeg" alt="Imagem exemplo" width="300">
+  <img src="example.jpeg" alt="Imagem exemplo" width="300">
 </p>
 
 Este projeto é um clone do popular jogo Cookie Clicker, desenvolvido em TypeScript e JavaScript. A aplicação permite aos usuários clicar em um cookie para ganhar pontos e comprar upgrades que aumentam a produção de cookies automaticamente.
