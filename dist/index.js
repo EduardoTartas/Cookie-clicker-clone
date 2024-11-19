@@ -1,4 +1,5 @@
 import { cookie, grandma, farm, mine } from './Entity.js';
+let firstAcess = true;
 // Function that saves the infos of the Entities
 function saveInfos() {
     localStorage.setItem('counter', cookie.getQuantity().toString());
@@ -22,7 +23,7 @@ function loadInfos() {
     mine.setQuantity(parseInt(localStorage.mineQuantity));
 }
 function askToLoadInfos() {
-    if (parseInt(localStorage.counter) != 0 && confirm("Do you want to load the old infos?")) {
+    if (!firstAcess && confirm("Do you want to load the old infos?")) {
         loadInfos();
     }
 }
@@ -64,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // Event listener for cookie click
     cookieImage.addEventListener('click', () => {
+        firstAcess = false;
         cookie.buy1();
         update();
     });
