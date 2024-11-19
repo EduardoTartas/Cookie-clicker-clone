@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
             mineBuy5.classList.add('button-false-hover');
         }
     });
-    // Interval to add cookies per second to the total
+    // Interval to add cookies per second to the total 
     setInterval(() => {
         cookie.setQuantity(cookie.getQuantity() + cookie.getCookiesPerSecond());
         saveInfos();
