@@ -60,6 +60,6 @@ export class Entity {
 }
 
 export const cookie  = new Entity(0, 0, 0);
-export const grandma = new Entity(50, 5, 1.05);
-export const farm    = new Entity(200, 10, 1.10);
-export const mine    = new Entity(500, 20, 1.25);
+export const grandma = new Entity(50, 3, 1.20);
+export const farm    = new Entity(200, 6, 1.25);
+export const mine    = new Entity(500, 12, 1.35);
