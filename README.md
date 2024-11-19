@@ -1,3 +1,4 @@
+<a id="top"></a>
 # Cookie Clicker Clone
 
 <p align="center">
@@ -8,12 +9,14 @@
 🇧🇷 Este projeto é um clone do popular jogo Cookie Clicker, desenvolvido em TypeScript e JavaScript. A aplicação permite aos usuários clicar em um cookie para ganhar pontos e comprar upgrades que aumentam a produção de cookies automaticamente.
 
 - [English Version](#english-version)
-  
+- [Versão em Português](#versao-em-portugues)
+
 ---
 
+<a id="versao-em-portugues"></a>
 # 🇧🇷 Versão em Português
 
-## Tecnologias Utilizadas {#tecnologias-utilizadas}
+## Tecnologias Utilizadas
 - **TypeScript**: Linguagem de programação utilizada para implementar a lógica do jogo, garantindo maior segurança e escalabilidade.
 - **JavaScript**: Utilizado para manipulação do DOM e interatividade.
 - **HTML/CSS**: Estruturação e Estilização da página web.
@@ -49,8 +52,11 @@ O arquivo HTML estrutura a página web, incluindo elementos como o cookie clicá
 ## Referência
 - [Cookie Clicker Jogo Original](https://orteil.dashnet.org/cookieclicker/)
 
+[Voltar ao Topo](#top)
+
 ---
 
+<a id="english-version"></a>
 # 🇺🇸 English Version
 
 ## Technologies Used
@@ -88,3 +94,5 @@ The HTML file structures the webpage, including elements like the clickable cook
 
 ## Reference
 - [Cookie Clicker Original Game](https://orteil.dashnet.org/cookieclicker/)
+
+[Back to Top](#top)
