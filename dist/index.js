@@ -62,10 +62,18 @@ document.addEventListener('DOMContentLoaded', () => {
         minePrice.innerHTML = `${mine.getPrice()}`;
         minePrice5.innerHTML = `${mine.cost5()}`;
     }
+    // Function to handle upscale animation
+    function upscaleAnimation(element) {
+        element.classList.add('upscale');
+        element.addEventListener('animationend', () => {
+            element.classList.remove('upscale');
+        }, { once: true });
+    }
     // Event listener for cookie click
     cookieImage.addEventListener('click', () => {
         cookie.buy1();
         update();
+        upscaleAnimation(cookieImage);
     });
     // Event listeners for grandma buy buttons
     grdBuy1.addEventListener('click', () => {

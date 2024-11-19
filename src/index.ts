@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Selectors for cookie elements
     const counter     = document.querySelector('#counter')!;
-    const cookieImage = document.querySelector('#cookieImage')!;
+    const cookieImage = document.querySelector('#cookieImage') as HTMLImageElement;
 
     // Selectors for grandma elements
     const grdQuantity = document.querySelector('#grandma-quantity')!;
@@ -81,10 +81,19 @@ document.addEventListener('DOMContentLoaded', () => {
         minePrice5.innerHTML   = `${mine.cost5()}`;
     }
 
+    // Function to handle upscale animation
+    function upscaleAnimation(element: HTMLElement): void {
+        element.classList.add('upscale');
+        element.addEventListener('animationend', () => {
+            element.classList.remove('upscale');
+        }, { once: true });
+    }
+
     // Event listener for cookie click
     cookieImage.addEventListener('click', () => {
         cookie.buy1();
         update();
+        upscaleAnimation(cookieImage);
     });
 
     // Event listeners for grandma buy buttons
