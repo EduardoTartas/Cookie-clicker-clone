@@ -1,5 +1,5 @@
 import { cookie, grandma, farm, mine } from './Entity.js';
-let firstAcess = true;
+let firstAcess;
 // Function that saves the infos of the Entities
 function saveInfos() {
     localStorage.setItem('counter', cookie.getQuantity().toString());
@@ -23,12 +23,16 @@ function loadInfos() {
     mine.setQuantity(parseInt(localStorage.mineQuantity));
 }
 function askToLoadInfos() {
-    if (!firstAcess && confirm("Do you want to load the old infos?")) {
+    if (localStorage.getItem("counter") != null && confirm("Do you want to load the old infos?")) {
         loadInfos();
+    }
+    else {
+        saveInfos();
     }
 }
 document.addEventListener('DOMContentLoaded', () => {
     askToLoadInfos();
+    console.log(firstAcess);
     // Selectors for cookie elements
     const counter = document.querySelector('#counter');
     const cookieImage = document.querySelector('#cookieImage');
@@ -179,8 +183,9 @@ document.addEventListener('DOMContentLoaded', () => {
             mineBuy5.classList.add('button-false-hover');
         }
     });
-    // Interval to add cookies per second to the total 
+    // Interval to add cookies per second to the total
     setInterval(() => {
+        firstAcess = false;
         cookie.setQuantity(cookie.getQuantity() + cookie.getCookiesPerSecond());
         saveInfos();
         update();

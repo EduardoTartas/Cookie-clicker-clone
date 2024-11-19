@@ -1,6 +1,5 @@
 import { Entity, cookie, grandma, farm, mine } from './Entity.js';
-
-let firstAcess:boolean = true;
+let firstAcess:Boolean;
 
 // Function that saves the infos of the Entities
 function saveInfos(): void {
@@ -18,7 +17,7 @@ function saveInfos(): void {
 }
 
 // Function that loads the infos of Entities
-function loadInfos(): void {
+function loadInfos(): void { 
     cookie.setQuantity(parseInt(localStorage.counter));
     cookie.setCookiesPerSecond(parseInt(localStorage.cookiePerSecond));
     
@@ -33,13 +32,16 @@ function loadInfos(): void {
 }
 
 function askToLoadInfos() {
-    if (!firstAcess && confirm("Do you want to load the old infos?")) {
+    if (localStorage.getItem("counter") != null && confirm("Do you want to load the old infos?")) {
         loadInfos();
+    } else {
+        saveInfos();
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     askToLoadInfos();
+    console.log(firstAcess);
 
     // Selectors for cookie elements
     const counter     = document.querySelector('#counter')!;
@@ -209,6 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Interval to add cookies per second to the total
     setInterval(() => {
+        firstAcess = false;
         cookie.setQuantity(cookie.getQuantity() + cookie.getCookiesPerSecond());
         saveInfos();
         update();
