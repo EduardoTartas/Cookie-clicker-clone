@@ -4,7 +4,16 @@
   <img src="example.jpeg" alt="Example Image" width="800">
 </p>
 
-This project is a clone of the popular Cookie Clicker game, developed in TypeScript and JavaScript. The application allows users to click on a cookie to earn points and purchase upgrades that increase automatic cookie production.
+🇺🇸 This project is a clone of the popular Cookie Clicker game, developed in TypeScript and JavaScript. The application allows users to click on a cookie to earn points and purchase upgrades that increase automatic cookie production.  
+🇧🇷 Este projeto é um clone do popular jogo Cookie Clicker, desenvolvido em TypeScript e JavaScript. A aplicação permite aos usuários clicar em um cookie para ganhar pontos e comprar upgrades que aumentam a produção de cookies automaticamente.
+
+## Table of Contents
+- [English Version](#english-version)
+- [Portuguese Version](#versão-em-português)
+
+---
+
+# English Version
 
 ## Technologies Used
 - **TypeScript**: Programming language used to implement the game's logic, ensuring better safety and scalability.
@@ -27,29 +36,24 @@ This project is a clone of the popular Cookie Clicker game, developed in TypeScr
 - **Develop Game Logic**: Implement incremental game functionalities in a simplified manner.
 
 ## Project Structure
-### Main File (index.ts)
+### Main File (`index.ts`)
 The main file contains the game's logic, including functions to save and load progress, update the user interface, and manage click and upgrade events.
 
-### Entity Class (Entity.ts)
+### Entity Class (`Entity.ts`)
 This class manages the attributes and methods related to the game's entities (Cookie, Grandma, Farm, Mine). It includes methods for purchasing upgrades, calculating costs, and updating cookie production.
 
-### Style File (index.css)
+### Style File (`index.css`)
 The style file defines the appearance of the user interface, including layout, animations, and responsiveness.
 
-### HTML File (index.html)
+### HTML File (`index.html`)
 The HTML file structures the webpage, including elements like the clickable cookie, score counters, and upgrade purchase buttons.
 
 ## Reference
-### https://orteil.dashnet.org/cookieclicker/
+- [Cookie Clicker Original Game](https://orteil.dashnet.org/cookieclicker/)
 
+---
 
-# 🇧🇷 Portuguese version
-
-<p align="center">
-  <img src="example.jpeg" alt="Imagem exemplo" width="800">
-</p>
-
-Este projeto é um clone do popular jogo Cookie Clicker, desenvolvido em TypeScript e JavaScript. A aplicação permite aos usuários clicar em um cookie para ganhar pontos e comprar upgrades que aumentam a produção de cookies automaticamente.
+# 🇧🇷 Versão em Português
 
 ## Tecnologias Utilizadas
 - **TypeScript**: Linguagem de programação utilizada para implementar a lógica do jogo, garantindo maior segurança e escalabilidade.
@@ -59,7 +63,7 @@ Este projeto é um clone do popular jogo Cookie Clicker, desenvolvido em TypeScr
 ## Funcionalidades Principais
 ### Gerenciamento de Entidades
 - **Cookie**: O usuário pode clicar no cookie para ganhar pontos.
-- **Upgrades**: Entidades como **Grandma, Farm** e **Mine** Produzem cookies automaticamente a cada segundo.
+- **Upgrades**: Entidades como **Grandma, Farm** e **Mine** produzem cookies automaticamente a cada segundo.
 
 ### Operações de Jogo
 - **Clique no Cookie**: O usuário pode clicar no cookie para ganhar pontos.
@@ -84,6 +88,5 @@ O arquivo de estilos define a aparência da interface do usuário, incluindo a d
 ### Arquivo HTML (`index.html`)
 O arquivo HTML estrutura a página web, incluindo elementos como o cookie clicável, contadores de pontos e botões de compra de upgrades.
 
-
 ## Referência
-### https://orteil.dashnet.org/cookieclicker/
+- [Cookie Clicker Jogo Original](https://orteil.dashnet.org/cookieclicker/)
