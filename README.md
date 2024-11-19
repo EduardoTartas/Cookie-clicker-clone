@@ -9,7 +9,7 @@
 
 ## Table of Contents
 - [English Version](#english-version)
-- [Portuguese Version](#versão-em-português)
+- [Portuguese Version](#tecnologias-utilizadas)
 
 ---
 
@@ -55,7 +55,7 @@ The HTML file structures the webpage, including elements like the clickable cook
 
 # 🇧🇷 Versão em Português
 
-## Tecnologias Utilizadas
+## Tecnologias Utilizadas {#tecnologias-utilizadas}
 - **TypeScript**: Linguagem de programação utilizada para implementar a lógica do jogo, garantindo maior segurança e escalabilidade.
 - **JavaScript**: Utilizado para manipulação do DOM e interatividade.
 - **HTML/CSS**: Estruturação e Estilização da página web.
